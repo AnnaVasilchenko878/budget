@@ -35,7 +35,7 @@ function chooseExpenses() {
 chooseExpenses();
 
 //  бюджет на день
-appData.moneyPerDay = appData.budjet/30;
+appData.moneyPerDay = (appData.budjet/30).toFixed(2);
 alert("Ежеднеыный бюджет " + appData.moneyPerDay);
 
 // уровень достатка 
@@ -48,3 +48,15 @@ if(appData.moneyPerDay<100) {
 } else {
   console.log('Произошла ошибка')
 }
+
+// накопления с депозита
+function checkSavings() {
+  if(appData.savings == true) {
+    let save = +prompt('Введите сумму накоплений: ', ''),
+        percent = +prompt('Под какой процент: ', '');
+        // прибыль за месяц
+    appData.monthIncome = save/100/12*percent;
+    alert(`Доход в месяц составляет: ${appData.monthIncome}`);
+  }
+}
+checkSavings();
