@@ -21,14 +21,18 @@ let appData = {
 // запись данных 
 let a, b;
 
-while(true) {
-  a = prompt("Введите обязательную статью расходов в этом месяце:"),
-  b = +prompt("Во сколько это обойдется?");
-  if((typeof(a) === 'string' && typeof(a) != null && a != '' && a.length < 50) && (typeof(b) != null && b != '')) {
-    appData.expenses[a] = b;
-    break;
+function chooseExpenses() {
+  while (true) {
+    a = prompt("Введите обязательную статью расходов в этом месяце:"),
+      b = +prompt("Во сколько это обойдется?");
+    if ((typeof (a) === 'string' && typeof (a) != null && a != '' && a.length < 50) && (typeof (b) != null && b != '')) {
+      appData.expenses[a] = b;
+      break;
+    }
   }
 }
+
+chooseExpenses();
 
 //  бюджет на день
 appData.moneyPerDay = appData.budjet/30;
