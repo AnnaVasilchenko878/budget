@@ -61,16 +61,30 @@ let appData = {
     }
   },
   chooseIncome: function () {
-    let items = prompt(`Перечислите источники дохода `, ' ');
-    appData.income = items.split(', ');
-    appData.income.push(prompt(`Есть ли еще какие-то источники дохода?`, ''));
-    appData.income.sort();
+    while (true) { 
+      let items = prompt(`Перечислите источники дохода `, ``);
+      if(typeof(items) === 'string' && typeof(items) !== null && items !== '') {
+        appData.income = items.split(', ');
+        appData.income.push(prompt("Есть ли еще какие-то источники дохода?", ''));
+        appData.income.sort();
+        break;
+      }
+    }
+  console.log(`Способы доп. заработка: `);
+  appData.income.forEach((element, index) => console.log(`${index+1}: ${element}`));
+  },
+  printObject: function() {
+    console.log(`Наша программа включает в себя данные:`)
+    for(key in appData) {
+      console.log(key);
+    }
   }
-};
 
+};
 // appData.chooseExpenses();
 // appData.chooseOptExpenses();
 // appData.detectDayBudget();
 // appData.detectLevel();
 // appData.checkSavings();
-appData.chooseIncome();
+// appData.chooseIncome();
+appData.printObject();
